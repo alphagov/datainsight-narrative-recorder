@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'gli'
+
+require_relative '../src/recorders/leader'
+
+include GLI
+
+program_desc 'Stuff'
+
+version 0.1
+
+desc 'More stuff'
+command :run do |c|
+  c.action do |global_options, options, args|
+    Recorders::LeaderRecorder.new.run
+  end
+end
+
+exit GLI.run(ARGV)
