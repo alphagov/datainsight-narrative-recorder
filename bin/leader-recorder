@@ -4,7 +4,7 @@ require 'rubygems'
 require 'gli'
 require 'logger'
 
-require_relative '../src/recorders/leader'
+require_relative '../lib/recorders/leader'
 
 include GLI
 
