@@ -8,7 +8,7 @@ api for use by the dashboards.
 
 The recorder listens to messages on the following topic:
 
-    *.leader
+    *.narrative
 
 The queue name defaults to _narrative_ but can be overridden using the
 QUEUE environment variable.
