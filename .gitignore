@@ -1,1 +1,4 @@
 narrative.json
+vendor
+.bundle
+*.zip
