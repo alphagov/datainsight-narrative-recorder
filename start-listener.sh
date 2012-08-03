@@ -9,5 +9,5 @@ ANSI_RESET="\033[0m"
 echo -e "${ANSI_YELLOW}Installing dependencies${ANSI_RESET}"
 bundle install --path vendor --local
 
-echo -e "${ANSI_YELLOW}Starting application server${ANSI_RESET}"
-bundle exec bin/narrative-recorder --port $PORT
+echo -e "${ANSI_YELLOW}Starting listener${ANSI_RESET}"
+bundle exec bin/recorder run
