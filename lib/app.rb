@@ -3,9 +3,9 @@ Bundler.require
 
 require 'sinatra'
 
-require_relative 'leader'
+require_relative 'narrative'
 
-get '/leader' do
+get '/narrative' do
   content_type :json
-  {:content => Leader.new.content}.to_json
+  {:content => Narrative.new.content}.to_json
 end
