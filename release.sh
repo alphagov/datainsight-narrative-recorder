@@ -23,5 +23,7 @@ ssh $HOST "mkdir /srv/datainsight-recorder-narrative/release/$VERSION; unzip -o 
 echo -e "${ANSI_YELLOW}Linking package${ANSI_RESET}"
 ssh $HOST "rm /srv/datainsight-recorder-narrative/current; ln -s /srv/datainsight-recorder-narrative/release/$VERSION/ /srv/datainsight-recorder-narrative/current;"
 # restart
-echo -e "${ANSI_YELLOW}Restarting service${ANSI_RESET}"
-ssh $HOST "sudo service datainsight-recorder-narrative restart"
+echo -e "${ANSI_YELLOW}Restarting web service${ANSI_RESET}"
+ssh $HOST "sudo service datainsight-recorder-narrative-web restart"
+echo -e "${ANSI_YELLOW}Restarting listener${ANSI_RESET}"
+ssh $HOST "sudo service datainsight-recorder-narrative-listener restart"
