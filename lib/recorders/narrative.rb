@@ -18,9 +18,13 @@ module Recorders
 
     def run
       @queue.subscribe do |msg|
-        @logger.info("Received message: #{msg[:payload]}")
-        File.open('narrative.json', 'w') do |handle|
-          handle.puts msg[:payload]
+        begin
+          @logger.info("Received message: #{msg[:payload]}")
+          File.open('narrative.json', 'w') do |handle|
+            handle.puts msg[:payload]
+          end
+        rescue Exception => e
+          @logger.error("#{e} \n" + e.backtrace.join("\n"))
         end
       end
     end
