@@ -20,7 +20,7 @@ module Recorders
       @queue.subscribe do |msg|
         begin
           @logger.info("Received message: #{msg[:payload]}")
-          File.open('narrative.json', 'w') do |handle|
+          File.open('/var/tmp/narrative.json', 'w') do |handle|
             handle.puts msg[:payload]
           end
         rescue Exception => e
