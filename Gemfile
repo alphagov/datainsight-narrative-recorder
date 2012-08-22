@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem "rake"
 gem "sinatra"
 gem "bunny"
-gem "gli"
+gem "gli", "1.6.0"
 gem "unicorn"
 
 group :test do
