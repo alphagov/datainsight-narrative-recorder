@@ -5,6 +5,7 @@ set -e
 ANSI_YELLOW="\033[33m"
 ANSI_RED="\033[31m"
 ANSI_RESET="\033[0m"
+PROJECT_NAME=datainsight-recorder-narrative
 
 export VERSION="$1"
 if [ -z "$VERSION" ]; then
@@ -19,15 +20,24 @@ fi
 #HOST="deploy@datainsight"
 HOST="deploy@datainsight.alphagov.co.uk"
 
-scp datainsight-recorder-narrative-$VERSION.zip $HOST:/srv/datainsight-recorder-narrative/packages
+# remove older deployments
+clean_old_files() {
+    DIR=$1
+    OLD=$(ssh $HOST "ls -t '$DIR'" | tail -n +2)
+    for file in $OLD; do echo "remove $DIR/$file"; ssh $HOST rm -rf $DIR/$file; done
+}
+clean_old_files /srv/$PROJECT_NAME/release
+clean_old_files /srv/$PROJECT_NAME/packages
+
+scp $PROJECT_NAME-$VERSION.zip $HOST:/srv/$PROJECT_NAME/packages
 # deploy
 echo -e "${ANSI_YELLOW}Deploying package${ANSI_RESET}"
-ssh $HOST "mkdir /srv/datainsight-recorder-narrative/release/$VERSION; unzip -o /srv/datainsight-recorder-narrative/packages/datainsight-recorder-narrative-$VERSION.zip -d /srv/datainsight-recorder-narrative/release/$VERSION;"
+ssh $HOST "mkdir /srv/$PROJECT_NAME/release/$VERSION; unzip -o /srv/$PROJECT_NAME/packages/$PROJECT_NAME-$VERSION.zip -d /srv/$PROJECT_NAME/release/$VERSION;"
 # link
 echo -e "${ANSI_YELLOW}Linking package${ANSI_RESET}"
-ssh $HOST "rm /srv/datainsight-recorder-narrative/current; ln -s /srv/datainsight-recorder-narrative/release/$VERSION/ /srv/datainsight-recorder-narrative/current;"
+		ssh $HOST "rm /srv/$PROJECT_NAME/current; ln -s /srv/$PROJECT_NAME/release/$VERSION/ /srv/$PROJECT_NAME/current;"
 # restart
 echo -e "${ANSI_YELLOW}Restarting web service${ANSI_RESET}"
-ssh $HOST "sudo service datainsight-recorder-narrative-web restart"
+ssh $HOST "sudo service $PROJECT_NAME-web restart"
 echo -e "${ANSI_YELLOW}Restarting listener${ANSI_RESET}"
-ssh $HOST "sudo service datainsight-recorder-narrative-listener restart"
+ssh $HOST "sudo service $PROJECT_NAME-listener restart"
