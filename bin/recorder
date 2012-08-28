@@ -12,13 +12,11 @@ program_desc 'Stuff'
 
 version 0.1
 
-logger = Logger.new(STDOUT)
-logger.level = Logger::INFO
-
 desc 'More stuff'
 command :run do |c|
   c.action do |global_options, options, args|
-    Recorders::NarrativeRecorder.new(logger).run
+    Datainsight::Logging.configure(:type => :recorder)
+    Recorders::NarrativeRecorder.new.run
   end
 end
 
