@@ -1,7 +1,5 @@
-require "bundler"
-Bundler.require
-
-require 'sinatra'
+require "bundler/setup"
+Bundler.require(:default, :exposer)
 
 require_relative 'narrative'
 

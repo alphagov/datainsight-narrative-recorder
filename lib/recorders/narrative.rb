@@ -1,8 +1,3 @@
-require 'bundler/setup'
-Bundler.require
-
-require 'bunny'
-
 module Recorders
   class NarrativeRecorder
 

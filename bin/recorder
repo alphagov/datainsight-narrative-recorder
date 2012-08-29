@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
-require 'gli'
-require 'logger'
+require 'bundler/setup'
+Bundler.require(:default, :recorder)
 
 require_relative '../lib/recorders/narrative'
 
