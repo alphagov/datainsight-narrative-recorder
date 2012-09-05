@@ -1,17 +1,13 @@
-GIT
-  remote: git@github.com:alphagov/datainsight_logging.git
-  revision: 4733688e5a7eaab520110793cafdde8ede334616
-  specs:
-    datainsight_logging (0.0.1)
-      logging
-
 GEM
   remote: https://rubygems.org/
+  remote: https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/
   specs:
     builder (3.0.0)
     bunny (0.8.0)
     ci_reporter (1.7.1)
       builder (>= 2.1.2)
+    datainsight_logging (0.0.1)
+      logging
     diff-lcs (1.1.3)
     gli (1.6.0)
     kgio (2.7.4)
@@ -47,7 +43,7 @@ PLATFORMS
 DEPENDENCIES
   bunny
   ci_reporter
-  datainsight_logging!
+  datainsight_logging
   gli (= 1.6.0)
   rake
   rspec
