@@ -2,12 +2,5 @@
 
 set -e
 
-ANSI_YELLOW="\033[33m"
-ANSI_RED="\033[31m"
-ANSI_RESET="\033[0m"
-
-echo -e "${ANSI_YELLOW}Installing dependencies${ANSI_RESET}"
-bundle install --path vendor --local
-
-echo -e "${ANSI_YELLOW}Starting listener${ANSI_RESET}"
+echo -e "Starting listener"
 bundle exec bin/recorder run
