@@ -1,7 +1,7 @@
 require "bundler/setup"
 Bundler.require(:default, :exposer)
 
-require_relative 'narrative'
+require_relative 'narrative_file'
 
 helpers Datainsight::Logging::Helpers
 
@@ -14,7 +14,7 @@ end
 
 get '/narrative' do
   content_type :json
-  {:content => Narrative.new.content}.to_json
+  {:content => NarrativeFile.new.content}.to_json
 end
 
 error do
