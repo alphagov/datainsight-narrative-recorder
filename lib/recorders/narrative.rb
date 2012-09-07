@@ -1,3 +1,5 @@
+require_relative '../narrative_file'
+
 module Recorders
   class NarrativeRecorder
 
