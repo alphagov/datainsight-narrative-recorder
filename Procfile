@@ -1,0 +1,1 @@
+listener: bundle exec bin/recorder run
