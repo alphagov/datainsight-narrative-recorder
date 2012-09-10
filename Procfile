@@ -1,1 +1,1 @@
-listener: bundle exec bin/recorder run
+web: bundle exec bin/recorder run
