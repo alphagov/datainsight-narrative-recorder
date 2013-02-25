@@ -1,8 +1,8 @@
 source "https://rubygems.org"
-source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
+source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 
 gem "rake"
-gem "datainsight_logging"
+gem "datainsight_logging", "0.0.3"
 
 group :exposer do
   gem "sinatra"
