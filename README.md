@@ -1,3 +1,5 @@
+# THIS PROJECT IS DEPRECATED!
+
 ## About
 
 This recorder forms part of the Data Insight Platform. It listens for the
